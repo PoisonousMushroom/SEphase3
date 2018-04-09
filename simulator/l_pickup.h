@@ -18,8 +18,8 @@
 class l_pickup: public Instruction
 {
 private:
-    tstate x;
-    tstate y;
+    aux::tstate x;
+    aux::tstate y;
 public:
     void execute(Bug b);
     void parse(string args);

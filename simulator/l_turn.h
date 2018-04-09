@@ -18,8 +18,8 @@
 class l_turn: public Instruction
 {
     private:
-        tleftright lr;
-        tstate z;
+        aux::tleftright lr;
+        aux::tstate z;
     public:
         void execute(Bug b);
         void parse (string args);

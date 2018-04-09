@@ -35,7 +35,7 @@ public:
         length = 0;
     };
     ~World(){};
-    int load(char*);
+    int load(string);
     void execute_cycle();
     //cell::Cell get_cell(aux::tposition);
     aux::tposition adjacent(aux::tdirection, aux::tposition);

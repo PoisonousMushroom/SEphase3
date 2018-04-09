@@ -21,6 +21,7 @@
 #include "Cell.h"
 #include <algorithm>
 #include "program.h"
+#include "tokenizer.h"
 using namespace std;
 
 /*
@@ -35,8 +36,10 @@ bool odd(int n){
     return !(n%2);
 }
 
-int World::load(char* worldfile){
-    ifstream wf;
+int World::load(string filenames){
+    vector<string> files=tokens_in_vector(filenames);
+    vector<string>::iterator it=files.begin();
+    ifstream wf,pf;
     string line;
     aux::tcolor black;
     aux::tcolor red;
@@ -44,7 +47,7 @@ int World::load(char* worldfile){
     red.c = 1;
     int bbcount = 0;
     int rbcount = 0;
-    wf.open(worldfile, ios::in);
+    wf.open(*it, ios::in);
     if(wf.is_open()){
         wf >> width >> length;
     }
@@ -98,6 +101,8 @@ int World::load(char* worldfile){
         cout << endl;
         
     }
+    it++;
+    Program p(*it);
     cout << "World initialization complete. \n";
     return 0;
 }

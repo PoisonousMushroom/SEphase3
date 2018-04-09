@@ -12,14 +12,15 @@
  */
 
 #include <cstdlib>
-#include "./headers/bug.h"
-#include "./headers/aux.h"
-#include "./headers/world.h"
+#include "bug.h"
+#include "aux.h"
+#include "world.h"
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "./headers/Cell.h"
+#include "Cell.h"
 #include <algorithm>
+#include "program.h"
 using namespace std;
 
 /*
@@ -37,7 +38,8 @@ bool odd(int n){
 int World::load(char* worldfile){
     ifstream wf;
     string line;
-    aux::tcolor black, red;
+    aux::tcolor black;
+    aux::tcolor red;
     black.c = 0;
     red.c = 1;
     int bbcount = 0;

@@ -27,7 +27,7 @@ public:
     Bug(){
         color.c = 0;
         prog_id = 999;
-        resting = false;
+        resting = 0;
         dead = false;
         direction.d = 0;
         has_food = false;
@@ -42,13 +42,8 @@ public:
         }
         color = c;
         prog_id = new_pid;
-        if(new_resting != 0){
-            resting = true;
-            remaining_rest = new_resting;
-        }
-        else{
-            resting = false;
-        }
+        resting = new_resting;
+        remaining_rest=0;
 //        cout << "Bug has been init'd with following parameters: \n" 
 //                << "Color:" << color.c 
 //                << "\n ID: "<< prog_id 
@@ -113,16 +108,22 @@ public:
         return pos;
     }
     
-    void start_resting(){
-        if(resting == true){
-            throw Exception("Bug is already resting!\n");
-        }
-        resting = true;
-        remaining_rest = 1; //arbitrary value; might have to be changed
+    void start_resting(){//fixed
+        if(remaining_rest==resting)
+            throw "The bug was already resting\n";
+        remaining_rest=resting; 
     }
     
     bool rested(){
-        return !resting;
+        if(remaining_rest>0)//fixed
+        {
+            remaining_rest--;
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
     }
     
     bool is_dead(){
@@ -150,7 +151,7 @@ private:
     aux::tstate state;
     aux::tcolor color;
     aux::tdirection direction;
-    bool resting = 0;
+    int resting;
     bool has_food = false;
     int prog_id;
     aux::tposition pos;

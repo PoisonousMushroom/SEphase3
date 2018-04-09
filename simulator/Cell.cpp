@@ -12,8 +12,8 @@
  */
 
 
-#include "./headers/Cell.h"
-#include "./headers/exception.h"
+#include "Cell.h"
+#include "exception.h"
 
 Cell::Cell(char symb) {
     food = 0;
@@ -83,6 +83,7 @@ void Cell::set_occupant(Bug* new_occupant) {
 
 void Cell::set_occupancy(bool b){
     occupant_set = b;
+    occupant=NULL;
 }
 
 bool Cell::is_black_home_area() {
